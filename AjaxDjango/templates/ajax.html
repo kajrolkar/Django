@@ -1,0 +1,36 @@
+<script>
+    $("#show").click(function(){
+
+        let w_name=$("#fileName").val();
+        let filePath=$("#fileUpload").get(0).files[0];
+        let csrf=$("input[name=csrfmiddlewaretoken]").val();
+        if(w_name==""){
+            alert("Enter file Name")
+        } else {
+            let formData = new FormData();
+            formData.append("w_name",w_name);
+            formData.append("fileToUpload",filePath);
+            formData.append("csrfmiddlewaretoken",csrf);
+            $.ajax({
+                url:"{% url 'loadFile' %}",
+                method:'POST',
+                data:formData,
+                processData: false,
+                contentType: false,
+                beforeSend : function(){
+                    $('#loader').removeClass('hidden')
+                },
+                success:function(data){
+
+                    $('#textArea').val(data['file'])
+                    //$('#readFile').attr("href",data['msg']);
+                },
+                complete:function(){
+                    $('#loader').addClass('hidden')
+                    $('.bg-model').css('display','flex')
+                },
+                error:function(data){alert("Choose txt format")},
+            });
+        }
+    });
+</script>

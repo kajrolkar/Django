@@ -1,0 +1,61 @@
+.bg-model{
+display:none
+}
+
+.lds-dual-ring.hidden {
+        display: none;
+    }
+    /*Add an overlay to the entire page blocking any further presses to buttons or other elements.*/
+.overlay {
+    width:100%;
+    height:100%;
+    background-color:rgba(0,0,0,0.7);
+    position:absolute;
+    top:0;
+    display:flex;
+    transition: all 0.5s;
+
+}
+
+/*Spinner Styles*/
+.lds-dual-ring {
+    display:block;
+    align-items:center;
+}
+.lds-dual-ring:after {
+    content: "";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 20% auto;
+    border-radius: 50%;
+    border: 6px solid #fff;
+    border-color: #fff transparent #fff transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+.model-content {
+width:1000px;
+height:530px;
+background-color:white;
+border-radius:4px;
+text-align:center;
+padding:20px;
+
+}
+
+.close{
+top:0;
+right:14px;
+font-size:42px;
+transform:rotate(45deg);
+cursor:pointer;
+color:black;
+}
